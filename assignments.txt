@@ -1,16 +1,15 @@
 week 11:
 epel - open git, create api, explain how the structure of the code works to everyone
 adi - add_drive_data + add_doc (user backend)
-vershkov - get_doc + get_list_of_docs + add_desc (user backed)
-yali - create metadata format + explain to adi and vershkov how to work with it + add/del/get_person (manager backend)
-prives - add_point + del_point + get_docer + add_calender + get_calenders
+yali - get_doc + get_list_of_docs + add_desc + requirements file + working with the db (user backed)
+prives - starting to work on the GUI
 
 week 12:
-epel - manager GUI (gui only, no backend integration)
-vershkov - add_non_activity + del_non_activity + get_non_activities + add_to_drive + del_from_drive
+epel - manager GUI
+vershkov - all the function in your manager/vershkov_stuff, create the files format as you wish
 yali - get_events + create_event + create_k_events + del_event
-adi - user GUI (gui only, no backend integration)
-prives - get_non_done + remind_none_done
+adi - all the function in manager/adi_stuff, basicly - adding drive folder with docing format and deleting from the drive
+prives - user GUI
 
 week 13:
 epel + vershkov - integration of manager app
