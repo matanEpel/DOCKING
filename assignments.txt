@@ -19,7 +19,7 @@ prives - fine tuning of the app design
 
 week 14:
 everyone - fixing bugs and testing their app (adi + yali - user, vershkov + epel - manager)
-suli - adding stuff you want to add and implementing it
+suli - adding stuff you want to add and implementing it + "compiling" the programs
 
 week 15:
 everyone - getting ready to show off to everyone we want to show off to + final fine tuning of the apps.
