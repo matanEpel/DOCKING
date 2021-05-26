@@ -1,0 +1,25 @@
+week 11:
+epel - open git, create api, explain how the structure of the code works to everyone
+adi - add_drive_data + add_doc (user backend)
+vershkov - get_doc + get_list_of_docs + add_desc (user backed)
+yali - create metadata format + explain to adi and vershkov how to work with it + add/del/get_person (manager backend)
+prives - add_point + del_point + get_docer + add_calender + get_calenders
+
+week 12:
+epel - manager GUI (gui only, no backend integration)
+vershkov - add_non_activity + del_non_activity + get_non_activities + add_to_drive + del_from_drive
+yali - get_events + create_event + create_k_events + del_event
+adi - user GUI (gui only, no backend integration)
+prives - get_non_done + remind_none_done
+
+week 13:
+epel + vershkov - integration of manager app
+adi + yali - integration user part
+prives - fine tuning of the app design
+
+week 14:
+everyone - fixing bugs and testing their app (adi + yali - user, vershkov + epel - manager)
+suli - adding stuff you want to add and implementing it
+
+week 15:
+everyone - getting ready to show off to everyone we want to show off to + final fine tuning of the apps.
