@@ -20,6 +20,7 @@ from google.auth.transport.requests import Request
 
 # If modifying these scopes, delete the file token.pickle.
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
+import time
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
@@ -63,8 +64,8 @@ def add_drive_data():
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists('user/data_files/drive_token.pickle'):
-        with open('user/data_files/drive_token.pickle', 'rb') as token:
+    if os.path.exists('data_files/drive_token.pickle'):
+        with open('data_files/drive_token.pickle', 'rb') as token:
             creds = pickle.load(token)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -72,10 +73,10 @@ def add_drive_data():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'user/data_files/drive-credentials.json', SCOPES)
+                'data_files/drive-credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open('user/data_files/drive_token.pickle', 'wb') as token:
+        with open('data_files/drive_token.pickle', 'wb') as token:
             pickle.dump(creds, token)
 
     service = build('drive', 'v3', credentials=creds)
@@ -161,7 +162,8 @@ def get_all_names():
                 type_doc = "folder"
             else:
                 type_doc = type_doc[-1]
-            names_id_dict[file["title"]] = {"name": file["title"],"link": file["alternateLink"], "date": file["createdDate"], "type": type_doc,
+            names_id_dict[file["title"]] = {"name": file["title"], "link": file["alternateLink"],
+                                            "date": file["createdDate"], "type": type_doc,
                                             "week": week, "sem": sem}
             count += 1
             if count % 7 == 0:
@@ -179,9 +181,12 @@ def search(input_search, files_dict):
 
 
 def update_meta_data_every_1_hour():
-    folders_dict = get_all_names()
-    with open("metadata.json", "w") as metadata:
-        json.dump(folders_dict, metadata)
+    while True:
+        time.sleep(60*10)  # sleep for 110 minutes
+        folders_dict = get_all_names()
+        with open("metadata.json", "w") as metadata:
+            json.dump(folders_dict, metadata)
+        print("heyyy")  # TODO: change when done
 
 
 def get_data_from_file():

@@ -1,7 +1,8 @@
-from user_backend import *
+from django.http import response
 
-folders_dict = get_data_from_file()
-print(search("description", folders_dict))
+from user_backend import *
+from threading import Thread
+from server_api import *
 
 
 def user_backend_server():
@@ -11,28 +12,15 @@ def user_backend_server():
     2. getting a string for search
     and returning all the names of files and links to the client
     """
-
-    # in case of uploading file:
-    # TODO: name, path = get_file_from_user()
-    # TODO: add_doc(path, global_vars.TALPIOT_DRIVE_ID)
-    # TODO: deleting the file in path
-
-    # in case of asing for metadata file:
-    # TODO: send metadata.json to client
-
-    # in case of searching file:
-    # TODO: string = get_search_string_from_user()
-    files_dict = get_data_from_file()
-    # TODO: send back the result of search(string, files_dict)
+    server.test(HandlerClass=HTTPRequestHandler)
 
 
 def main():
     init()
-    # TODO: run in another process every one hour:
-    update_meta_data_every_1_hour()
 
-    # TODO: run in another process:
-    user_backend_server()
+    Thread(target=update_meta_data_every_1_hour).start()
+    Thread(target=user_backend_server).start()
+
 
 if __name__ == '__main__':
     main()
