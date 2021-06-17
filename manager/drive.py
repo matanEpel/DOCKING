@@ -71,7 +71,7 @@ def create_folder(name, date):
     return folder_link, folder_id
 
 
-def search_by_word(word: str, folders):
+def search_by_word(word, folders):
     """gets a word and list of names and ids and return ids of matching names"""
     ids = {}
     for name in folders.keys():

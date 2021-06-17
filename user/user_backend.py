@@ -85,10 +85,10 @@ def add_drive_data():
 
 def search_by_word(word: str, folders):
     """gets a word and list of names and ids and return ids of matching names"""
-    ids = {}
-    for name in folders.keys():
-        if word in name or name in word:
-            ids[name] = folders[name]
+    ids = list()
+    for block in folders:
+        if word in block["name"] or block["name"]  in word:
+            ids.append(block)
     return ids
 
 
@@ -107,7 +107,7 @@ def week_date(date):
 def get_all_names():
     """getting the names and ids of every folder in the drive"""
 
-    names_id_dict = {}
+    names_id_dict = []
     # Variable creds will store the user access token.
     # If no valid token found, we will create one.
     creds = None
@@ -162,9 +162,9 @@ def get_all_names():
                 type_doc = "folder"
             else:
                 type_doc = type_doc[-1]
-            names_id_dict[file["title"]] = {"name": file["title"], "link": file["alternateLink"],
+            names_id_dict.append({"name": file["title"], "link": file["alternateLink"],
                                             "date": file["createdDate"], "type": type_doc,
-                                            "week": week, "sem": sem}
+                                            "week": {"week": week, "sem": sem}})
             count += 1
             if count % 7 == 0:
                 print("\n" * 10 + "loading" + "." * (1 + count % 6))
@@ -182,11 +182,11 @@ def search(input_search, files_dict):
 
 def update_meta_data_every_1_hour():
     while True:
-        time.sleep(60*10)  # sleep for 110 minutes
         folders_dict = get_all_names()
         with open("metadata.json", "w") as metadata:
             json.dump(folders_dict, metadata)
         print("heyyy")  # TODO: change when done
+        time.sleep(60*10)  # sleep for 110 minutes
 
 
 def get_data_from_file():

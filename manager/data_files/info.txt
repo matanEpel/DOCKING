@@ -1,0 +1,9 @@
+emails: data_files/mails.txt
+not_activities: data_files/not_activities.txt
+description: data_files/description_file.docx
+documentation_file: data_files/documentation.docx
+description_file: data_files/description_file.docx
+SHIFTS_CALENDER: t3c1al753ulnt7s5tpde7v9oqk@group.calendar.google.com
+TALPIOT_DRIVE_ID: 14AzuPEU9NDVSehy-suOmJnKmqvgQGyN4
+ORIGINAL_CALENDER: 9ki3fau1v2peis5r10sk7u12gc@group.calendar.google.com
+EMAIL_DATA: data_files/mails.txt

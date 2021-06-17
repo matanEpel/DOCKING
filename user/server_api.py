@@ -25,7 +25,7 @@ class HTTPRequestHandler(server.SimpleHTTPRequestHandler):
         # self.send_response(200, "ok")
 
         filename = os.path.basename(self.path)
-        print(filename + "hey")
+        print(filename)
         if "update" in filename:
             print(2)
             with open("metadata.json", "r") as f:
@@ -44,4 +44,5 @@ class HTTPRequestHandler(server.SimpleHTTPRequestHandler):
             add_doc(filename, global_vars.TALPIOT_DRIVE_ID)
 
 if __name__ == '__main__':
+    init()
     server.test(HandlerClass=HTTPRequestHandler)
